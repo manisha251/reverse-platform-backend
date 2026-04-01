@@ -1,0 +1,16 @@
+com\reverse\platform\dto\LoginResponse.class
+com\reverse\platform\repository\CandidateRepository.class
+com\reverse\platform\service\AuthService.class
+com\reverse\platform\repository\CompanyRepository.class
+com\reverse\platform\controller\CompanyController.class
+com\reverse\platform\entity\Candidate.class
+com\reverse\platform\controller\AuthController.class
+com\reverse\platform\entity\Offer.class
+com\reverse\platform\entity\Company.class
+com\reverse\platform\ReversePlatformApplication.class
+com\reverse\platform\dto\ErrorResponse.class
+com\reverse\platform\service\CompanyService.class
+com\reverse\platform\repository\OfferRepository.class
+com\reverse\platform\controller\CandidateController.class
+com\reverse\platform\dto\LoginRequest.class
+com\reverse\platform\service\CandidateService.class
