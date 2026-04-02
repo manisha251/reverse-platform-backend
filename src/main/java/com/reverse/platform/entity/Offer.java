@@ -1,6 +1,7 @@
 package com.reverse.platform.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "offers")
@@ -18,12 +19,31 @@ public class Offer {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String message;
 
-    public Offer() {}
+    @Column(nullable = false)
+    private Boolean isVerifiedCompany;
 
-    public Offer(Long companyId, Long candidateId, String message) {
+    @Column(nullable = false)
+    private String companyName;
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column
+    private String status; // PENDING, ACCEPTED, DECLINED
+
+    public Offer() {
+        this.createdAt = LocalDateTime.now();
+        this.status = "PENDING";
+    }
+
+    public Offer(Long companyId, Long candidateId, String message, Boolean isVerifiedCompany, String companyName) {
         this.companyId = companyId;
         this.candidateId = candidateId;
         this.message = message;
+        this.isVerifiedCompany = isVerifiedCompany;
+        this.companyName = companyName;
+        this.createdAt = LocalDateTime.now();
+        this.status = "PENDING";
     }
 
     public Long getId() {
@@ -56,5 +76,37 @@ public class Offer {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Boolean getIsVerifiedCompany() {
+        return isVerifiedCompany;
+    }
+
+    public void setIsVerifiedCompany(Boolean isVerifiedCompany) {
+        this.isVerifiedCompany = isVerifiedCompany;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

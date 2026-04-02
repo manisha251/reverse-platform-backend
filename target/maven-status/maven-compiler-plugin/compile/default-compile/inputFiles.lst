@@ -1,4 +1,5 @@
 C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\ErrorResponse.java
+C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\OfferController.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\CandidateController.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\LoginResponse.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\entity\Candidate.java
@@ -14,3 +15,4 @@ C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\LoginRequest.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\entity\Offer.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\service\CompanyService.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\entity\Company.java
+C:\reverseinter\backend\src\main\java\com\reverse\platform\service\OfferService.java

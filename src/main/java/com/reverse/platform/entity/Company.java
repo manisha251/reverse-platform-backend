@@ -20,13 +20,29 @@ public class Company {
 
     private String description;
 
-    public Company() {}
+    @Column(nullable = false)
+    private Boolean isVerified;
+
+    @Column(nullable = false)
+    private String verificationCode;
+
+    public Company() {
+        this.isVerified = false;
+        this.verificationCode = generateVerificationCode();
+    }
 
     public Company(String companyName, String email, String password, String description) {
         this.companyName = companyName;
         this.email = email;
         this.password = password;
         this.description = description;
+        this.isVerified = false;
+        this.verificationCode = generateVerificationCode();
+    }
+
+    private String generateVerificationCode() {
+        // Generate a random 6-digit verification code
+        return String.valueOf((int) (Math.random() * 900000) + 100000);
     }
 
     public Long getId() {
@@ -67,5 +83,21 @@ public class Company {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getIsVerified() {
+        return isVerified;
+    }
+
+    public void setIsVerified(Boolean isVerified) {
+        this.isVerified = isVerified;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }

@@ -6,6 +6,8 @@ com\reverse\platform\controller\CompanyController.class
 com\reverse\platform\entity\Candidate.class
 com\reverse\platform\controller\AuthController.class
 com\reverse\platform\entity\Offer.class
+com\reverse\platform\service\OfferService.class
+com\reverse\platform\controller\OfferController.class
 com\reverse\platform\entity\Company.class
 com\reverse\platform\ReversePlatformApplication.class
 com\reverse\platform\dto\ErrorResponse.class

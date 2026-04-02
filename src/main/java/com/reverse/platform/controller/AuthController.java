@@ -1,5 +1,6 @@
 package com.reverse.platform.controller;
 
+import com.reverse.platform.dto.ErrorResponse;
 import com.reverse.platform.dto.LoginRequest;
 import com.reverse.platform.dto.LoginResponse;
 import com.reverse.platform.service.AuthService;
@@ -16,12 +17,12 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
             LoginResponse response = authService.login(loginRequest);
             return ResponseEntity.ok(response);
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(new ErrorResponse("Login failed: " + e.getMessage()));
         }
     }
 }
