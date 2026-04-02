@@ -1,5 +1,5 @@
 # Ultra-simple Dockerfile for maximum compatibility
-FROM openjdk:17
+FROM eclipse-temurin:17-jdk
 
 # Install Maven
 RUN apt-get update && \
