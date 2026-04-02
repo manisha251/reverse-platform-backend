@@ -41,4 +41,22 @@ public class CompanyController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/dashboard/company/{id}")
+    public ResponseEntity<Company> getCompanyDashboard(@PathVariable Long id) {
+        Company company = companyService.getCompanyById(id);
+        if (company != null) {
+            return ResponseEntity.ok(company);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/verified-companies")
+    public ResponseEntity<List<Company>> getVerifiedCompanies() {
+        List<Company> companies = companyService.getAllCompanies();
+        List<Company> verifiedCompanies = companies.stream()
+                .filter(Company::getIsVerified)
+                .toList();
+        return ResponseEntity.ok(verifiedCompanies);
+    }
 }

@@ -78,4 +78,43 @@ public class OfferController {
             return ResponseEntity.badRequest().body("Failed to delete offer: " + e.getMessage());
         }
     }
+
+    @GetMapping("/offers/sent/{companyId}")
+    public ResponseEntity<?> getSentOffers(@PathVariable Long companyId) {
+        try {
+            List<Offer> offers = offerService.getOffersByCompanyId(companyId);
+            return ResponseEntity.ok(offers);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to fetch sent offers: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/offers/received/{candidateId}")
+    public ResponseEntity<?> getReceivedOffers(@PathVariable Long candidateId) {
+        try {
+            List<Offer> offers = offerService.getOffersByCandidateId(candidateId);
+            return ResponseEntity.ok(offers);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to fetch received offers: " + e.getMessage());
+        }
+    }
+
+    @GetMapping("/offers/stats/company/{companyId}")
+    public ResponseEntity<?> getCompanyOfferStats(@PathVariable Long companyId) {
+        try {
+            List<Offer> offers = offerService.getOffersByCompanyId(companyId);
+            long pending = offers.stream().filter(o -> "PENDING".equals(o.getStatus())).count();
+            long accepted = offers.stream().filter(o -> "ACCEPTED".equals(o.getStatus())).count();
+            long declined = offers.stream().filter(o -> "DECLINED".equals(o.getStatus())).count();
+            
+            return ResponseEntity.ok(new Object() {
+                public final long total = offers.size();
+                public final long pending_count = pending;
+                public final long accepted_count = accepted;
+                public final long declined_count = declined;
+            });
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to fetch offer stats: " + e.getMessage());
+        }
+    }
 }

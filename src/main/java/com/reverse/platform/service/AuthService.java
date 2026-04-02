@@ -1,5 +1,6 @@
 package com.reverse.platform.service;
 
+import com.reverse.platform.dto.CompanyRegisterRequest;
 import com.reverse.platform.dto.LoginRequest;
 import com.reverse.platform.dto.LoginResponse;
 import com.reverse.platform.entity.Candidate;
@@ -41,5 +42,30 @@ public class AuthService {
         }
 
         throw new RuntimeException("Invalid email or password");
+    }
+
+    public LoginResponse registerCompany(CompanyRegisterRequest request) {
+        // Check if email already exists
+        Optional<Company> existingCompany = companyRepository.findByEmail(request.getEmail());
+        if (existingCompany.isPresent()) {
+            throw new RuntimeException("Email already registered");
+        }
+
+        Optional<Candidate> existingCandidate = candidateRepository.findByEmail(request.getEmail());
+        if (existingCandidate.isPresent()) {
+            throw new RuntimeException("Email already registered");
+        }
+
+        // Create new company
+        Company company = new Company(
+            request.getCompanyName(),
+            request.getEmail(),
+            request.getPassword(),
+            request.getDescription()
+        );
+
+        // Save to database
+        Company savedCompany = companyRepository.save(company);
+        return new LoginResponse("company", savedCompany);
     }
 }

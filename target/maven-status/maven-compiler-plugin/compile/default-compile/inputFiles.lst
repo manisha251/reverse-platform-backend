@@ -1,6 +1,7 @@
 C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\ErrorResponse.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\OfferController.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\CandidateController.java
+C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\CandidateResponse.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\LoginResponse.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\entity\Candidate.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\repository\CandidateRepository.java
@@ -9,6 +10,7 @@ C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\AuthContro
 C:\reverseinter\backend\src\main\java\com\reverse\platform\service\AuthService.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\repository\CompanyRepository.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\ReversePlatformApplication.java
+C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\CompanyRegisterRequest.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\repository\OfferRepository.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\controller\CompanyController.java
 C:\reverseinter\backend\src\main\java\com\reverse\platform\dto\LoginRequest.java

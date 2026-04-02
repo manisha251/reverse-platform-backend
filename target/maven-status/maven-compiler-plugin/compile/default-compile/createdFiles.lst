@@ -1,3 +1,4 @@
+com\reverse\platform\dto\CompanyRegisterRequest.class
 com\reverse\platform\dto\LoginResponse.class
 com\reverse\platform\repository\CandidateRepository.class
 com\reverse\platform\service\AuthService.class
@@ -8,6 +9,8 @@ com\reverse\platform\controller\AuthController.class
 com\reverse\platform\entity\Offer.class
 com\reverse\platform\service\OfferService.class
 com\reverse\platform\controller\OfferController.class
+com\reverse\platform\controller\OfferController$1.class
+com\reverse\platform\dto\CandidateResponse.class
 com\reverse\platform\entity\Company.class
 com\reverse\platform\ReversePlatformApplication.class
 com\reverse\platform\dto\ErrorResponse.class

@@ -1,5 +1,6 @@
 package com.reverse.platform.controller;
 
+import com.reverse.platform.dto.CandidateResponse;
 import com.reverse.platform.dto.ErrorResponse;
 import com.reverse.platform.entity.Candidate;
 import com.reverse.platform.service.CandidateService;
@@ -24,23 +25,30 @@ public class CandidateController {
             if (candidateService.findByEmail(candidate.getEmail()).isPresent()) {
                 return ResponseEntity.badRequest().body(new ErrorResponse("Email already exists: " + candidate.getEmail()));
             }
-            
+
             Candidate registeredCandidate = candidateService.registerCandidate(candidate);
-            return ResponseEntity.ok(registeredCandidate);
+            // Return response without password
+            CandidateResponse response = new CandidateResponse(
+                    registeredCandidate.getId(),
+                    registeredCandidate.getName(),
+                    registeredCandidate.getEmail(),
+                    registeredCandidate.getSkills()
+            );
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ErrorResponse("Registration failed: " + e.getMessage()));
         }
     }
 
     @GetMapping("/candidates")
-    public ResponseEntity<List<Candidate>> getAllCandidates() {
-        List<Candidate> candidates = candidateService.getAllCandidates();
+    public ResponseEntity<List<CandidateResponse>> getAllCandidates() {
+        List<CandidateResponse> candidates = candidateService.getAllCandidates();
         return ResponseEntity.ok(candidates);
     }
 
     @GetMapping("/candidates/{id}")
-    public ResponseEntity<Candidate> getCandidateById(@PathVariable Long id) {
-        Candidate candidate = candidateService.getCandidateById(id);
+    public ResponseEntity<CandidateResponse> getCandidateById(@PathVariable Long id) {
+        CandidateResponse candidate = candidateService.getCandidateById(id);
         if (candidate != null) {
             return ResponseEntity.ok(candidate);
         }
